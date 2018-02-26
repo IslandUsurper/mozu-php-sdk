@@ -273,7 +273,6 @@ class MozuClient {
                     $apiError = new ApiException($jsonResponse->message, $statusCode);
                 else
                     $apiError = new ApiException($response->getReasonPhrase().", inspect Mozu\Api\ApiException->items property for more details", $statusCode);
-                $apiError = new ApiException($jsonResponse->message, $statusCode);
                 if (isset($jsonResponse->additionalErrorData)) {
                     $apiError->setAdditionalErrorData( $jsonResponse->additionalErrorData);
                 }
