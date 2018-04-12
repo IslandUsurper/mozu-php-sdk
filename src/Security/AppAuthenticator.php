@@ -78,7 +78,7 @@ class AppAuthenticator {
             $promise = $client->requestAsync("PUT",AuthTicketUrl::RefreshAppAuthTicketUrl(null)->getUrl(), ['headers'=>$headers, 'body'=>$body, 'exceptions'=> true]);
             $response = $promise->wait();
 			$jsonResp = $response->getBody ( true );
-			$this->authTicket = json_decode ( $jsonResp );
+			static::$instance->authTicket = json_decode ( $jsonResp );
 			
 			$this->setRefreshInterval(true);
 		} catch(\Exception $e) {
